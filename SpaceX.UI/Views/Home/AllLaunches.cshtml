@@ -1,0 +1,132 @@
+﻿@model IEnumerable<SpaceX.API.Models.LaunchModel>
+
+@{
+    ViewBag.Title = "All Launches";
+}
+
+@section styles{
+
+    <link href="~/Content/css/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/css/kendo.moonlight.min.css" rel="stylesheet" />
+    <link href="~/Content/css/kendo.moonlight.mobile.min.css" rel="stylesheet" />
+}
+@section topscripts{
+    <script src="~/Content/js/kendo.all.min.js"></script>
+}
+    <div id="bodywrap">
+        <div id="tablewrap">
+            <table id="grid" class="table maintable">
+                <colgroup>
+                    <col style="width: 60px" />
+                    <col style="width: 160px" />
+                    <col style="width:160px" />
+                    <col style="width:120px" />
+                    <col style="width:130px" />
+                    <col style="width:100px" />
+                    <col style="width:100px" />
+                    @*<col style="width: 60px" />
+                    <col style="width: 160px" />
+                    <col style="width:auto" />
+                    <col style="width:auto" />
+                    <col style="width:auto" />
+                    <col style="width:auto" />
+                    <col style="width:auto" />*@
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th data-type="number">
+                            Flight
+                        </th>
+                        <th>
+                            Mission Patch
+                        </th>
+                        <th>
+                            Launch Date (Central)
+                        </th>
+                        <th>
+                            Rocket Name
+                        </th>
+                        <th>
+                            Launch Success?
+                        </th>
+                        <th>
+                            Cargo
+                        </th>
+                        <th>
+                            Press Kit
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+            {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Flight_number)
+                            </td>
+                            <td>
+                                <img src="@Html.DisplayFor(modelItem => item.Links.mission_patch_small)" />
+                            </td>
+                            <td>
+                                @item.Launch_date_central.ToString("yyyy-MM-dd h:mm tt")
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Rocket.Rocket_name)
+                            </td>
+                            <td id="launchsuccess">
+                                @{
+                                    if (item.Launch_success)
+                                    {
+                                        <span id="success">Success!</span>
+                                    }
+                                    else if (item.Launch_date_central > DateTime.Now)
+                                    {
+                                        <span>Upcoming Launch</span>
+                                    }
+                                    else
+                                    {
+                                        <span id="failure">Failure</span>
+                                    }
+
+                                }
+                            </td>
+                            <td>
+                                @{ int i = 0;
+                                    foreach (var payload in item.Rocket.Second_stage.Payloads)
+                                    {
+                                        if (!item.Rocket.Second_stage.Payloads[i].Cargo_manifest.IsEmpty())
+                                        {
+                                            <a class="tablelink" href="@item.Rocket.Second_stage.Payloads[i].Cargo_manifest" target="_blank">Cargo Manifest</a>
+                                        }
+                                        i++;
+                                    }
+                                }
+                            </td>
+                            <td>
+                                @if (!item.Links.presskit.IsEmpty())
+                                {
+                                    <a class="tablelink" href="@Html.DisplayFor(modelItem => item.Links.presskit)" target="_blank">Press Kit</a>
+                                }
+                            </td>
+                        </tr>
+                                    }
+                </tbody>
+            </table>
+        </div>
+    <span id="tableexplainer">Click on any column heading to sort by that column.</span>        
+</div>
+<a id="homebutton" href="@Url.Action("Index","Home")" class="btn btn-danger" role="button">Back to Countdown</a>    
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#grid").kendoGrid({                
+                height: 550,
+                sortable: true,
+                scrollable: true,
+            });
+            
+        });
+    </script>
+}

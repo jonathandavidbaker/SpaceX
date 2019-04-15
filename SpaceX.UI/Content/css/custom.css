@@ -1,0 +1,87 @@
+﻿body{
+    margin: 0;
+    padding: 0;
+    
+}
+
+td img {
+    max-height: 150px;
+}
+
+td {
+    height: 150px;
+}
+
+#success {
+    color: #4CAF50;
+}
+
+#failure, .tablelink {
+    color: #FB7483;
+}
+
+.tablelink {
+    text-decoration: underline;
+}
+
+td, th {
+    text-align: center;
+}
+
+#nextlaunch {
+    text-align: center;
+    color: #882F3C;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+*:before, *:after {
+    border-radius: 50%;
+}
+
+#mybutton {
+    background-color: #882F3C;
+    border-color: #882F3C;
+}
+
+.k-link {
+    text-align: center;
+}
+
+#bodywrap{
+    
+    margin: 0.5%;
+}
+
+@media screen and (max-width: 991px) {
+    .container{
+        margin: 0;
+        padding: 0;
+    }
+    td img {
+        max-height: 75px;
+    }
+
+    td {
+        height: 75px;
+    }
+    
+}
+
+#homebutton {
+    margin-top: 5%;
+}
+
+#fh5co-footer {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#foot p a, i {
+    color: #882F3C;
+}
+
+#tableexplainer {
+    text-align: center;
+    color: #FB7483;
+}

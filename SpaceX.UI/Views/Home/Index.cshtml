@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Launch Countdown";
+}
+
+<span id="nextlaunch">Next SpaceX Launch in...</span>
+<div class="row">
+    <div id="simply-countdown-losange" class="simply-countdown simply-countdown-one"></div>
+</div>
+<a id="mybutton" href="@Url.Action("AllLaunches", "Home")" class="btn btn-danger" role="button">View All Launches</a>
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $.get("https://api.spacexdata.com/v3/launches/next", function (response) {
+                var json = response.launch_date_local;
+                console.log(json);
+                var dateStr = Date.parse(json);
+                console.log(dateStr);
+                var d = new Date(new Date(dateStr).getTime());
+                console.log(d);
+
+                $('#simply-countdown-losange').simplyCountdown({
+                    year: d.getFullYear(),
+                    month: d.getMonth() + 1,
+                    day: d.getDate(),
+                    hours: d.getHours(),
+                    minutes: d.getMinutes(),
+                    seconds: d.getSeconds(),
+                    enableUtc: false
+                });
+            });
+        });
+    </script>
+}

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceX.UI", "SpaceX.UI\SpaceX.UI.csproj", "{681605CF-B5C2-4528-94B5-93689B6FE49B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceX.API", "SpaceX.API\SpaceX.API.csproj", "{46693004-2913-424B-A8BC-EEFD6DA15B0C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{681605CF-B5C2-4528-94B5-93689B6FE49B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{681605CF-B5C2-4528-94B5-93689B6FE49B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{681605CF-B5C2-4528-94B5-93689B6FE49B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{681605CF-B5C2-4528-94B5-93689B6FE49B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46693004-2913-424B-A8BC-EEFD6DA15B0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46693004-2913-424B-A8BC-EEFD6DA15B0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46693004-2913-424B-A8BC-EEFD6DA15B0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46693004-2913-424B-A8BC-EEFD6DA15B0C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
